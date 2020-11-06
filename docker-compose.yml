@@ -1,0 +1,20 @@
+version: '2.1'
+services:
+  jenkins-worker:
+    container_name: jenkins-worker
+    image: niccontrerasf/jenkins-slave:2.0-arm64
+    environment:
+      JENKINS_PASS: pass
+      JENKINS_USER: user
+      JENKINS_URL: jenkins.server.com
+      LABELS: arm edge
+      JENKINS_MODE: exclusive
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - ${PWD}/workspace:/var/jenkins
+    - /usr/bin/docker:/usr/bin/docker
+    - /tmp:/tmp
+    user: root
