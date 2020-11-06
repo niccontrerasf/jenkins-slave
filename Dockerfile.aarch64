@@ -29,4 +29,6 @@ RUN curl --create-dirs -fsSLo ${JAR_DIR}/agent.jar \
 RUN curl --create-dirs -fsSLo ${JAR_DIR}/swarm-client.jar \
   https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${SWARM_VERSION}/swarm-client-${SWARM_VERSION}-jar-with-dependencies.jar
 
-CMD [ "/bin/bash","-c","#(nop)" ]
+COPY run.sh /run.sh
+
+CMD [ "/bin/bash","/run.sh" ]
