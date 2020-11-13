@@ -16,4 +16,4 @@ JENKINS_PORT=${JENKINS_PORT:-80};
 [[ -n "${JENKINS_URL}" ]]   && SWARM_ARGS="${SWARM_ARGS} -master http://${JENKINS_URL}:${JENKINS_PORT}";
 
 echo "java -jar /usr/share/jenkins/swarm-client.jar ${SWARM_ARGS} ${EXTRA_ARGS}"
-java -jar /usr/share/jenkins/swarm-client.jar ${SWARM_ARGS} ${EXTRA_ARGS}
+eval java -jar /usr/share/jenkins/swarm-client.jar ${SWARM_ARGS} ${EXTRA_ARGS}
